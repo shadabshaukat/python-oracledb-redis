@@ -81,6 +81,37 @@ curl -X GET http://localhost:5000/orders/2
 curl -X GET http://localhost:5000/orders/3
 ```
 
+## Test Case
+
+### A. Simulate Cache Expiration of Redis and Performing Hard Read from Oracle
+
+```
+curl -X POST -H "Content-Type: application/json" -d '{
+  "order_id": 1,
+  "customer_id": 123,
+  "product_id": 456,
+  "product_description": "Sample product",
+  "order_delivery_address": "123 Example St.",
+  "order_date_taken": "2023-03-15 15:00:00",
+  "order_misc_notes": "Notes about the order"
+}' http://localhost:5000/orders
+```
+
+Read the order (should be read from Redis):
+```
+curl -X GET http://localhost:5000/orders/1
+```
+
+Flush Redis data to simulate cache expiration:
+```
+redis-cli FLUSHALL
+```
+
+Read the order again (should be read from Oracle now):
+```
+curl -X GET http://localhost:5000/orders/1
+```
+
 ## Practical Example of Using this Solution for a Shopping Cart Microservice
 
 In an e-commerce website, the shopping cart microservice is responsible for managing customers' shopping carts, such as adding items to the cart, updating item quantities, and removing items. We can use this code to simulate an e-commerce website taking orders using this Flask app
