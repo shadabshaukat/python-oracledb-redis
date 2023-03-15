@@ -127,20 +127,27 @@ curl -X POST -H "Content-Type: application/json" -d '{
 }' http://localhost:5000/orders
 ```
 
+<img width="913" alt="Screen Shot 2023-03-15 at 7 18 45 pm" src="https://user-images.githubusercontent.com/39692236/225248954-567f7598-1519-41c4-95ce-68a94e0f9a1e.png">
+
 #### Read the order (should be read from Redis):
 ```
 curl -X GET http://localhost:5000/orders/1
 ```
+<img width="787" alt="Screen Shot 2023-03-15 at 7 19 04 pm" src="https://user-images.githubusercontent.com/39692236/225249052-9cbb13d4-44c7-4738-b1c1-bd8664593527.png">
+
 
 #### Flush Redis data to simulate cache expiration:
 ```
 redis-cli FLUSHALL
 ```
 
+<img width="410" alt="Screen Shot 2023-03-15 at 7 19 29 pm" src="https://user-images.githubusercontent.com/39692236/225249107-3c7f3424-0476-4853-8e1e-654ccb4f463a.png">
+
 #### Read the order again (should be read from Oracle now):
 ```
 curl -X GET http://localhost:5000/orders/1
 ```
+<img width="819" alt="Screen Shot 2023-03-15 at 7 19 46 pm" src="https://user-images.githubusercontent.com/39692236/225249143-8832309c-8943-46c7-8a1f-7900b4bd8fd0.png">
 
 ## Practical Example of Using this Solution for a Shopping Cart Microservice
 
