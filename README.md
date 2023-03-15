@@ -81,9 +81,7 @@ curl -X GET http://localhost:5000/orders/2
 curl -X GET http://localhost:5000/orders/3
 ```
 
-## Test Case
-
-### A. Simulate Cache Expiration of Redis and Performing Hard Read from Oracle
+## Test Case - Simulating cache expiration of Redis and performing reads from Oracle
 
 ```
 curl -X POST -H "Content-Type: application/json" -d '{
