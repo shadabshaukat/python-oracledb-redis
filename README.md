@@ -18,11 +18,12 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-Set up your Oracle Database and Redis connections in the app.py Python file.
+Note : Set up your Oracle Database and Redis connections in the app.py Python file.
 
-Run the Flask app:
-
+### Run the Flask app:
+```
 python3 app.py
+```
 
 ## API Usage
 ### Write an order
