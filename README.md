@@ -84,6 +84,8 @@ curl -X GET http://localhost:5000/orders/3
 
 ## Test Case - Simulating cache expiration of Redis and performing reads from Oracle
 
+#### Write the order to both Redis and Oracle
+
 ```
 curl -X POST -H "Content-Type: application/json" -d '{
   "order_id": 1,
@@ -96,17 +98,17 @@ curl -X POST -H "Content-Type: application/json" -d '{
 }' http://localhost:5000/orders
 ```
 
-Read the order (should be read from Redis):
+#### Read the order (should be read from Redis):
 ```
 curl -X GET http://localhost:5000/orders/1
 ```
 
-Flush Redis data to simulate cache expiration:
+#### Flush Redis data to simulate cache expiration:
 ```
 redis-cli FLUSHALL
 ```
 
-Read the order again (should be read from Oracle now):
+#### Read the order again (should be read from Oracle now):
 ```
 curl -X GET http://localhost:5000/orders/1
 ```
