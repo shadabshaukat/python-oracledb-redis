@@ -15,7 +15,7 @@ Client (Curl)  --->  Flask API  --->  Redis (Cache)
 Install dependencies:
 
 ```
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 Note : Set up your Oracle Database and Redis connections in the app.py Python file.
