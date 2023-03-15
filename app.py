@@ -1,15 +1,26 @@
 from flask import Flask, request, jsonify
-import cx_Oracle
+import os
+import oracledb
 import redis
 import json
 from datetime import datetime
 
+# Environment Variables for Oracle Database Connectivity
+user = os.environ['ORACLE_USER']
+password = os.environ['ORACLE_PASSWORD']
+dsn = os.environ['ORACLE_DSN']
+
+# Environment Variables for Redis Connectivity
+redishost = os.environ['REDIS_HOST']
+redispwd  = os.environ['REDIS_PASSWORD']
+redisport = os.environ['REDIS_PORT']
+
 # Connect to Oracle database
-oracle_connection = cx_Oracle.connect('redis', '********', 'host:port/servicename')
+oracle_connection = oracledb.connect(user=user, password=password, dsn=dsn)
 oracle_cursor = oracle_connection.cursor()
 
 # Connect to Redis server
-redis_client = redis.Redis(host='10.10.1.1',password="YourP@ssword123$#",port=6379)
+redis_client = redis.Redis(host=redishost,password=redispwd,port=redisport)
 
 # Flask App
 app = Flask(__name__)
@@ -82,4 +93,3 @@ def read_order(order_id):
 
 if __name__ == "__main__":
     app.run(debug=True)
-
