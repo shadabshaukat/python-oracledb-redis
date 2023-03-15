@@ -80,3 +80,19 @@ curl -X GET http://localhost:5000/orders/2
 
 curl -X GET http://localhost:5000/orders/3
 ```
+
+## Practical Example of Using this Solution for a Shopping Cart Microservice
+
+In an e-commerce website, the shopping cart microservice is responsible for managing customers' shopping carts, such as adding items to the cart, updating item quantities, and removing items. We can use this code to simulate an e-commerce website taking orders using this Flask app
+
+The code consists of a Flask application that exposes a RESTful API for managing orders (or shopping carts). It uses Redis as a cache and Oracle Database as the primary, persistent data store.
+
+ ### Writing orders (shopping carts): 
+ The API allows you to create new orders (shopping carts) and save them to Redis, Oracle, or both. Saving the data to Redis provides faster access to frequently used data, while saving the data to Oracle ensures persistence and consistency.
+
+### Reading orders (shopping carts): 
+When reading an order (shopping cart), the application first tries to fetch the data from Redis. If the data is available in Redis, it returns the data immediately, providing a fast response. If the data is not available in Redis, it fetches the data from the Oracle Database and returns it. In the provided code, it also caches the fetched data in Redis for future requests if the order was initially written to both databases.
+
+this code demonstrates a two-layer data storage approach for an e-commerce website's shopping cart microservice. It uses Redis as a fast cache for frequently accessed data and Oracle as the main, persistent data storage. This setup allows the application to achieve high performance and low latency for read operations while maintaining data persistence and consistency.
+
+To adapt this code for a shopping cart microservice, you would need to modify the table schema, API endpoints, and data manipulation logic to handle shopping cart data instead of orders.
