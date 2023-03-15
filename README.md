@@ -12,7 +12,22 @@ Client (Curl)  --->  Flask API  --->  Redis (Cache)
 
 ## Setup
 
-Install dependencies:
+### Create Table in Oracle
+```
+CREATE TABLE orders (
+  order_id NUMBER(38) PRIMARY KEY ,
+  customer_id NUMBER(38),
+  product_id NUMBER(38),
+  product_description VARCHAR2(500),
+  order_delivery_address VARCHAR2(500),
+  order_date_taken DATE,
+  order_misc_notes VARCHAR2(500)
+);
+
+```
+
+
+### Install dependencies:
 
 ```
 pip3 install -r requirements.txt
