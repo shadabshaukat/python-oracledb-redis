@@ -35,6 +35,20 @@ pip3 install -r requirements.txt
 
 Note : Set up your Oracle Database and Redis connections in the app.py Python file.
 
+### Set environment variables for Oracle and Redis database
+```
+export ORACLE_USER=admin 
+
+export ORACLE_PASSWORD="*******_"
+
+export ORACLE_DSN="(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=adb.ap-melbourne-1.oraclecloud.com))(connect_data=(service_name=g*******_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))" 
+  
+export REDIS_HOST=10.x.x.x
+
+export REDIS_PASSWORD="P@ssword31344\$#"
+
+export REDIS_PORT=6379
+```
 ### Run the Flask app:
 ```
 python3 app.py
