@@ -93,6 +93,6 @@ The code consists of a Flask application that exposes a RESTful API for managing
 ### Reading orders (shopping carts): 
 When reading an order (shopping cart), the application first tries to fetch the data from Redis. If the data is available in Redis, it returns the data immediately, providing a fast response. If the data is not available in Redis, it fetches the data from the Oracle Database and returns it. In the provided code, it also caches the fetched data in Redis for future requests if the order was initially written to both databases.
 
-this code demonstrates a two-layer data storage approach for an e-commerce website's shopping cart microservice. It uses Redis as a fast cache for frequently accessed data and Oracle as the main, persistent data storage. This setup allows the application to achieve high performance and low latency for read operations while maintaining data persistence and consistency.
+This code demonstrates a two-layer data storage approach for an e-commerce website's shopping cart microservice. It uses Redis as a fast cache for frequently accessed data and Oracle as the main, persistent data storage. This setup allows the application to achieve high performance and low latency for read operations while maintaining data persistence and consistency.
 
 To adapt this code for a shopping cart microservice, you would need to modify the table schema, API endpoints, and data manipulation logic to handle shopping cart data instead of orders.
